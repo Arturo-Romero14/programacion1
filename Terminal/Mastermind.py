@@ -26,11 +26,31 @@ def generar_codigo():
         codigo_secreto.append(random.choice(colores))
     return codigo_secreto
 
-codigo = generar_codigo()
-print(codigo)
-codigo2 = generar_codigo()
-print(codigo2)
-codigo3 = generar_codigo()
-print(codigo3)
-codigo4 = generar_codigo()
-print(codigo4)
+
+def mostrar_colores_disponibles():
+    print("Colores Disponibles:")
+    for letra,color_formato in COLORES_POSIBLES.items():
+        print(f" {letra}: {color_formato} {Style.RESET_ALL}", end=" ")
+
+
+def obtener_intento_usuario():
+    while True:
+        intento = input(f"Ingresa tu codigo de {LONGITUD_CODIGO} letras: \n").upper().strip()
+
+        if len(intento) != LONGITUD_CODIGO:
+            print(Fore.RED+f"Error: El código debe tener {LONGITUD_CODIGO} letras"+Style.RESET_ALL)
+            continue
+
+        valido = True
+        for letra in intento:
+            if letra not in COLORES_POSIBLES:
+                print(Fore.RED+f"Error: La letra '{letra}' no es un color valido. "+Style.RESET_ALL)
+                valido = False
+                break
+        
+        if valido:
+            return list(intento)
+
+
+def evaluar_intento(intento,codigo_secreto):
+    
