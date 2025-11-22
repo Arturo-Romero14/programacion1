@@ -16,8 +16,8 @@ COLORES_POSIBLES = {
     "B": Fore.WHITE+"◼"
 }
 
-LONGITUD_CODIGO = 6
-MAX_INTENTOS = 12
+LONGITUD_CODIGO = 5
+MAX_INTENTOS = 10
 
 def generar_codigo():
     colores = list(COLORES_POSIBLES.keys())
