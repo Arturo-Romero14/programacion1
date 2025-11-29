@@ -1,16 +1,16 @@
 import tkinter as tk
 from tkinter import font,filedialog, messagebox
 from config import TITULO,COLOR_BARRA_SUPERIOR,COLOR_MENU_LATERAL,COLOR_PANEL_PRINCIPAL 
-from util.util_ventana import centrar_ventana
 from util.util_imagenes import leer_imagen
+from util.util_ventana import centrar_ventana,resolver_ruta,cargar_fuente_memoria
 import pygame
 import os
-
 
 
 ruta=""
 estado=""
 nombre_archivo="<No se ha seleccionado un archivo>"
+
 
 def bind_hover_events(button):
     button.bind("<Enter>", lambda event:on_enter(event,button))
@@ -107,9 +107,9 @@ def salir():
 
 
 #Cargar la fuentes.
-#cargar_fuente_memoria("./fuentes/Font Awesome 7 Brands-Regular-400.otf")
-#cargar_fuente_memoria("./fuentes/Font Awesome 7 Free-Regular-400.otf")
-#cargar_fuente_memoria("./fuentes/Font Awesome 7 Free-Solid-900.otf")
+cargar_fuente_memoria("./fuentes/Font Awesome 7 Brands-Regular-400.otf")
+cargar_fuente_memoria("./fuentes/Font Awesome 7 Free-Regular-400.otf")
+cargar_fuente_memoria("./fuentes/Font Awesome 7 Free-Solid-900.otf")
 
 #Inicializar pygame
 pygame.init()
@@ -236,6 +236,7 @@ btn_productos = tk.Button(
     menu_lateral, text="\uf468 Productos",
     bg=COLOR_MENU_LATERAL, fg="#f2f2f2",
     bd=0, width=12, font=fontawesome, anchor="w"
+    ,command=mostrar_productos
 )
 
 btn_productos.pack(side=tk.TOP)
@@ -243,6 +244,7 @@ btn_reportes = tk.Button(
     menu_lateral, text="\uf201 Reportes",
     bg=COLOR_MENU_LATERAL, fg="#f2f2f2",
     bd=0, width=12, font=fontawesome, anchor="w"
+    ,command=mostrar_reportes
 )
 
 btn_reportes.pack(side=tk.TOP)
@@ -250,6 +252,7 @@ btn_usuarios = tk.Button(
     menu_lateral, text="\uf007 Usuarios",
     bg=COLOR_MENU_LATERAL, fg="#f2f2f2",
     bd=0, width=12, font=fontawesome, anchor="w"
+    ,command=mostrar_usuarios
 )
 
 btn_usuarios.pack(side=tk.TOP)

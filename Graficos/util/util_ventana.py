@@ -10,6 +10,7 @@ def centrar_ventana(ventana,ancho,alto):
     y = int((pantalla_alto/2) - (alto/2) ) #Determina el centro de la pantalla verticalmente
     return ventana.geometry(f"{ancho}x{alto}+{x}+{y}") #WxH+X+Y
 
+
 def resolver_ruta(ruta_relativa):
     if hasattr(sys,"_MEIPASS"):
         #Es un exe y buscar una carpeta temporal oculta
@@ -17,6 +18,7 @@ def resolver_ruta(ruta_relativa):
 
     #Ejecutamos el archivo de python en desarrollo
     return os.path.join(os.path.abspath("."),ruta_relativa)
+
 
 def cargar_fuente_memoria(ruta_fuente):
     path_fuente = resolver_ruta(ruta_fuente)
